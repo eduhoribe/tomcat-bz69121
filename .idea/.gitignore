@@ -1,0 +1,11 @@
+### Default ignored files ###
+/shelf/
+/workspace.xml
+/uiDesigner.xml
+
+### SonarLint plugin ###
+/sonarlint/
+/sonarlint-state.xml
+
+### GitToolBox plugin ###
+/git_toolbox_prj.xml
