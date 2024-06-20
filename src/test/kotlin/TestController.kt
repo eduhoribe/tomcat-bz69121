@@ -1,5 +1,7 @@
 package com.github.eduhoribe
 
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
@@ -7,11 +9,9 @@ import org.springframework.http.codec.ServerSentEvent
 import org.springframework.test.web.reactive.server.WebTestClient
 import org.springframework.test.web.reactive.server.returnResult
 import reactor.test.StepVerifier
-import java.lang.Thread.sleep
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.time.Duration.Companion.seconds
-import kotlin.time.toJavaDuration
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 class TestController {
@@ -26,7 +26,7 @@ class TestController {
     lateinit var errorController: ErrorController
 
     @Test
-    fun test() {
+    fun test() = runBlocking {
         webClient.get().uri("/ping").exchange().expectStatus().isOk
         assertEquals(0, errorController.count.get())
 
@@ -43,7 +43,7 @@ class TestController {
             .expectNextMatches { it.data()!! == "heartbeat" }
             .thenCancel()
             .verify()
-        sleep(5.seconds.toJavaDuration())
+        delay(5.seconds)
         assertEquals(2, errorController.count.get())
         assertEquals(1, controller.onErrorCount.get())
         assertEquals(1, controller.onCompletionCount.get())
