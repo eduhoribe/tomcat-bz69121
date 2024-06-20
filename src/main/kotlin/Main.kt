@@ -1,15 +1,15 @@
 package com.github.eduhoribe
 
-import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.runApplication
 import org.springframework.scheduling.annotation.EnableAsync
 import org.springframework.scheduling.annotation.EnableScheduling
 
 @SpringBootApplication
 @EnableScheduling
 @EnableAsync
-open class Main
+class Main
 
-fun main() {
-    SpringApplication.run(Main::class.java)
+fun main(args: Array<String>) {
+    runApplication<Main>(*args)
 }
