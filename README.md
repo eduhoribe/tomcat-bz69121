@@ -1,6 +1,6 @@
 # Tomcat BugZilla 69121
 
-A sample Spring Boot project to demonstrate a possible bug on Apache Tomcat 9.0.89 (see [bz 69121](https://bz.apache.org/bugzilla/show_bug.cgi?id=69121))
+A sample Spring Boot project to demonstrate a possible bug on Apache Tomcat 9.0.89 (see [bz 69121](https://web.archive.org/web/20250522081827/https://bz.apache.org/bugzilla/show_bug.cgi?id=69121))
 
 ## Logs
 
